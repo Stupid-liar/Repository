@@ -130,9 +130,8 @@
 								<div class="col-md-6">
 									<div id="main" style="width: 700px;height:400px;"></div>
 									<script type="text/javascript">
-                                        // 基于准备好的dom，初始化echarts实例
                                         var myChart = echarts.init(document.getElementById('main'));
-                                        option = {
+                                         var option = {
                                             /*tooltip : {
                                                 formatter: "{a} <br/>{b} : {c}%"
                                             },     */                                //不知道干嘛的但是删除好像没有影响
@@ -146,10 +145,10 @@
                                             ]
                                         };
 										 setInterval(function () {
-										 option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-										 myChart.setOption(option, true);
-										 },2000);     //随机生成数字显示
-										myChart.setOption(option);
+										     option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+										     myChart.setOption(option, true);
+										     },2000);     //随机生成数字显示
+										 myChart.setOption(option);
 									</script>
 							  </div>
 							</div>
@@ -242,8 +241,57 @@
 									</div>          收起和删除按钮-->
 								</div>
 								<div class="panel-body">
-									//链接时间对比表
-									//
+									<div id="A"style="width: 700px;height:280px;">
+										<script type="text/javascript">
+                                            var myChart = echarts.init(document.getElementById('A'));
+                                            option = {
+                                                title: {
+                                                    text: '%'
+                                                },
+                                                tooltip: {
+                                                    trigger: 'none'
+                                                },
+                                                legend: {
+                                                    data:[ 'Step Middle', 'Step End']
+                                                },
+                                                grid: {
+                                                    left: '3%',
+                                                    right: '2%',
+                                                    bottom: '3%',
+                                                    containLabel: true
+                                                },
+                                                toolbox: {
+                                                    feature: {
+                                                        saveAsImage: {}
+                                                    }
+                                                },
+                                                xAxis: {
+                                                    type: 'category',
+                                                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                },
+                                                yAxis: {
+                                                    type: 'value'
+                                                },
+                                                series: [
+
+                                                    {
+                                                        name:'Step Middle',
+                                                        type:'line',
+
+                                                        data:[82, 78, 90, 84, 59,63, 70]
+                                                    },
+                                                    {
+                                                        name:'Step End',
+                                                        type:'line',
+
+                                                        data:[60, 72, 88, 84, 69, 70, 81]
+                                                    }
+                                                ]
+                                            };
+
+										</script>
+
+									</div>
 								</div>
 							</div>
 							<!-- END MULTI CHARTS -->
