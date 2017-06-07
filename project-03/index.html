@@ -20,6 +20,9 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<script src="assets/scripts/echart.min.js"></script>
+
+
 </head>
 
 <body>
@@ -115,20 +118,39 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading" style="width:800px">
-							<h3 class="panel-title">Weekly Overview</h3>
-							<p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
+							<h3 class="panel-title">My Empirical Tree</h3>
+							<p class="panel-subtitle" style="text-align: center">成长状态（树苗，小树，参天大树）</p>
 						</div>
 						<div class="panel-body">
-							<div class="row"></div>
+
 							<div class="row">
-								<div class="col-md-9">
-									<div id="headline-chart" class="ct-chart"></div>
-								</div>
-								<div class="col-md-3">
-								  <img src="" alt="" width="344" height="263">
-								  <p style="text-align:center">1233312324124142412424241241412</p>
-								<p style="text-align:center">12333</p>
-								<p style="text-align:center">12333</p>
+								<div class="col-md-6 ">
+
+									<img src="assets/img/树.png" height="300" width="300" style="position: relative;left: 200px"></div>
+								<div class="col-md-6">
+									<div id="main" style="width: 700px;height:400px;"></div>
+									<script type="text/javascript">
+                                        // 基于准备好的dom，初始化echarts实例
+                                        var myChart = echarts.init(document.getElementById('main'));
+                                        option = {
+                                            /*tooltip : {
+                                                formatter: "{a} <br/>{b} : {c}%"
+                                            },     */                                //不知道干嘛的但是删除好像没有影响
+                                            series: [
+                                                {
+                                                    name: '经验',
+                                                    type: 'gauge',
+                                                   // detail: {formatter:'{value}%'},
+                                                    data: [{value: [99.99], name: '经验值'}]
+                                                }
+                                            ]
+                                        };
+										 setInterval(function () {
+										 option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+										 myChart.setOption(option, true);
+										 },2000);     //随机生成数字显示
+										myChart.setOption(option);
+									</script>
 							  </div>
 							</div>
 						</div>
@@ -140,56 +162,56 @@
 							<!-- RECENT PURCHASES -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">Recent Purchases</h3>
-									<div class="right">
+									<h3 class="panel-title">最近签到状态</h3>
+									<!--<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
+									</div>       收起和删除按钮 -->
 								</div>
 								<div class="panel-body no-padding">
 									<table class="table table-striped">
 										<thead>
-											<tr>
-												<th>Order No.</th>
+											<tr style="text-align: center">
 												<th>Name</th>
-												<th>Amount</th>
+												<th>Class Name</th>
+												<th>Number</th>
 												<th>Date &amp; Time</th>
 												<th>Status</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td><a href="#">763648</a></td>
-												<td>Steve</td>
-												<td>$122</td>
+										<tbody >
+											<tr >
+												<td>小明</td>
+												<td>&nbsp;&nbsp;&nbsp;Math</td>
+												<td>&nbsp;&nbsp;&nbsp;&nbsp;50</td>
 												<td>Oct 21, 2016</td>
-												<td><span class="label label-success">COMPLETED</span></td>
+												<td><span class="label label-success">SUCCESS</span></td>
 											</tr>
 											<tr>
-												<td><a href="#">763649</a></td>
-												<td>Amber</td>
-												<td>$62</td>
+												<td>小红</td>
+												<td>&nbsp;&nbsp;&nbsp;Databases</td>
+												<td>&nbsp;&nbsp;&nbsp;&nbsp;49</td>
 												<td>Oct 21, 2016</td>
-												<td><span class="label label-warning">PENDING</span></td>
+												<td><span class="label label-danger">FAILED</span></td>
 											</tr>
 											<tr>
-												<td><a href="#">763650</a></td>
-												<td>Michael</td>
-												<td>$34</td>
+												<td>小绿</td>
+												<td>&nbsp;&nbsp;&nbsp;Python</td>
+												<td>&nbsp;&nbsp;&nbsp;&nbsp;48</td>
 												<td>Oct 18, 2016</td>
 												<td><span class="label label-danger">FAILED</span></td>
 											</tr>
 											<tr>
-												<td><a href="#">763651</a></td>
-												<td>Roger</td>
-												<td>$186</td>
+												<td>小白</td>
+												<td>&nbsp;&nbsp;&nbsp;Java script</td>
+												<td>&nbsp;&nbsp;&nbsp;&nbsp;47</td>
 												<td>Oct 17, 2016</td>
 												<td><span class="label label-success">SUCCESS</span></td>
 											</tr>
 											<tr>
-												<td><a href="#">763652</a></td>
-												<td>Smith</td>
-												<td>$362</td>
+												<td>小黑</td>
+												<td>&nbsp;&nbsp;&nbsp;English</td>
+												<td>&nbsp;&nbsp;&nbsp;&nbsp;50</td>
 												<td>Oct 16, 2016</td>
 												<td><span class="label label-success">SUCCESS</span></td>
 											</tr>
@@ -198,8 +220,12 @@
 								</div>
 								<div class="panel-footer">
 									<div class="row">
-										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
-										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Purchases</a></div>
+										<div class="col-md-6">
+
+										</div>
+										<div class="col-md-6 text-right">
+											<a href="#" class="btn btn-primary">View All Purchases</a>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -209,14 +235,15 @@
 							<!-- MULTI CHARTS -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">Projection vs. Realization</h3>
-									<div class="right">
+									<h3 class="panel-title">签到时间对比</h3>
+									<!--<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
+									</div>          收起和删除按钮-->
 								</div>
 								<div class="panel-body">
-									<div id="visits-trends-chart" class="ct-chart"></div>
+									//链接时间对比表
+									//
 								</div>
 							</div>
 							<!-- END MULTI CHARTS -->
