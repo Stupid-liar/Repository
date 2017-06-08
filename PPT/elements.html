@@ -25,11 +25,14 @@
 	
 	#danmuarea {
 		position: relative;
-		background: #222;
-		width:800px;
+		<!--background-image:url('assets/img/1.jpg');-->
+		no-repeat top left scroll;   
+		background-size:contain;
+		width:791px;
 		height: 445px;
 		margin-left: auto;
 		margin-right: auto;
+		
 
 
 	}
@@ -158,24 +161,23 @@
 								<!--<img src="./assets/img/user3.png" width=700px;height=700px; style="margin-left:50px">-->
 								<!--添加弹幕-->
 								<div id="danmuarea" class"text-center">
-		 <div id="danmu" >
-		 </div>
-
-		</div>
-              
-
-                      <div class="text-center ctr" >
+								<div id="danmu" >
+								<img src= "assets/img/1.jpg" width=800px height=450px id="ppt">
+								</div>
+								</div>
+								
+								<div class="text-center ctr" >
                       	<br>
 
                       <button type="button"  onclick="resumer() ">弹幕开始/继续</button>&nbsp;&nbsp;&nbsp;&nbsp;
                       <button type="button"  onclick="pauser()">弹幕暂停</button>  &nbsp;&nbsp;&nbsp;&nbsp;
                        显示弹幕:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> &nbsp;&nbsp;&nbsp;&nbsp;
-                        弹幕透明度:<input type="range" name="op" id="op" onchange="op()" value="100"> <br>
+                        弹幕透明度:<input type="range" name="op" id="op" onchange="op()" value="100"> <br><br>
                       	当前弹幕运行时间(分秒)：<span id="time"></span>&nbsp;&nbsp;
                       	设置当前弹幕时间(分秒)： <input type="text" id="set_time" max=20 />    
            <button type="button"  onclick="settime()">设置</button>
           
-                	<br>
+                	<br><br>
 		
                 发弹幕:               
               <select  name="color" id="color" >
@@ -201,7 +203,7 @@
 						</div>
 						<div class="col-md-4">
 							<div >
-								<p>弹幕</p>
+								<p id="danmu_list">弹幕</p>
 								<p>弹幕</p>
 								<p>弹幕</p>
 								<p>弹幕</p>
@@ -335,6 +337,7 @@ function send(){
   var new_obj=eval('('+text_obj+')');
   $('#danmu').danmu("add_danmu",new_obj);
   document.getElementById('text').value='';
+  document.getElementById("danmu_list").innerHTML = text;
 }
 
 function op(){
