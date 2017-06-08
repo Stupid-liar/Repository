@@ -11,6 +11,7 @@ html {
 }
 body {
   margin: 0;
+  position: fixed;
 }
 article,
 aside,
@@ -5457,6 +5458,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
+  position: fixed;
 }
 .panel-heading {
   padding: 10px 15px;
@@ -6754,4 +6756,6 @@ button.close {
     display: none !important;
   }
 }
+
+
 /*# sourceMappingURL=bootstrap.css.map */
