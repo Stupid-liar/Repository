@@ -160,11 +160,19 @@
 						</div>
 						<div class="col-md-7" >
 							<div style="width=100%">
-								<!--<img src="./assets/img/user3.png" width=700px;height=700px; style="margin-left:50px">-->
 								<!--添加弹幕-->
 								<div id="danmuarea" class"text-center">
 								<div id="danmu" >
-								<img src= "assets/img/1.jpg" width=860px height=450px id="ppt">
+								<div class="background-picture" style="width:860px;height:450px;background-size: 100% 100%;
+		background-repeat: no-repeat;  background-image:url(assets/img/5.jpg)"  id="divtest">
+		<div class="col-md-6" style="width:430px;height:450px;float:left" >
+			<button id="pic_left" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChange()"></button>
+		</div>
+		<div class="col-md-6" style="width:430px;height:450px;float:left" >
+			<button id="pic_right" style="height:450px;width:430px;background:none;border:none;outline:none"></button>
+		</div>
+	</div>
+								
 								</div>
 								</div>
 								
@@ -205,11 +213,7 @@
 						</div>
 						<div class="col-md-3 " style="padding:0px;" >
 							<div  id="div1" style="width=80%;height:450px;background-color:white;margin-top:0px;overflow:auto">
-								 
-							<p id="danmu_list" style="text-align:left;	"></p>
-							
-							
-							
+								<p id="danmu_list" style="text-align:left;	"></p>
 							</div>
 						</div>
 					</div>
@@ -237,6 +241,13 @@
 	<script src="assets/js/jquery.danmu.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 <script>
+//添加js文件--
+function picChange() {
+
+                    $('#divtest').css('background-image','url(assets/img/1.jpg)')
+
+            }
+			
 (function(){
 $("#danmu").danmu({
 	// left:$("#danmuarea").offset().left,
@@ -331,9 +342,7 @@ function send(){
   var new_obj=eval('('+text_obj+')');
   $('#danmu').danmu("add_danmu",new_obj);
   document.getElementById('text').value='';
-  //var p = document.getElementById("danmu_list");
-  //p.innerHTML += text ;
-	// document.getElementById("danmu_list").innerHTML = text;
+  
 
 var oPNode = document.getElementById('danmu_list');//获取p节点的对象
 var node = document.createElement('p');//创建一个文本节点
